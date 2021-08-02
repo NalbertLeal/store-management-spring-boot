@@ -16,7 +16,7 @@ public class SellerController {
         this.sellerServicee = sellerServicee;
     }
 
-    @GetMapping("/seller/{email}")
+    @GetMapping("/seller")
     public Map show(@RequestParam String email) {
         try {
             return Map.of(
@@ -30,7 +30,7 @@ public class SellerController {
         }
     }
 
-    @GetMapping("/sellers-from-manager/{email}")
+    @GetMapping("/sellers-from-manager")
     public Map getSellersFromManager(
             @RequestParam String email
     ) {
@@ -49,12 +49,11 @@ public class SellerController {
     @PostMapping("/seller")
     public Map createSeller(@RequestBody Map<String, String> body) {
         try {
-            Double salary = Double.parseDouble(body.get("salary"));
             Seller user = new Seller(
                     body.get("fullname"),
                     body.get("email"),
                     body.get("password"),
-                    salary,
+                    Double.parseDouble(body.get("salary")),
                     body.get("manager")
             );
             return Map.of(
@@ -68,7 +67,7 @@ public class SellerController {
         }
     }
 
-    @PutMapping("/seller/{email}")
+    @PutMapping("/seller")
     public Map updateSeller(
             @RequestParam String email,
             @RequestBody Map<String, String> body
@@ -109,7 +108,7 @@ public class SellerController {
         }
     }
 
-    @DeleteMapping("/seller/{email}")
+    @DeleteMapping("/seller")
     public Map deleteSeller(@RequestParam String email) {
         try {
             sellerServicee.deleteSeller(email);

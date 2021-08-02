@@ -16,7 +16,7 @@ public class ManagerController {
         this.managerService = managerService;
     }
 
-    @GetMapping("/manager/{email}")
+    @GetMapping("/manager")
     public Map show(@RequestParam String email) {
         try {
             return Map.of(
@@ -50,7 +50,7 @@ public class ManagerController {
         }
     }
 
-    @PutMapping("/manager/{email}")
+    @PutMapping("/manager")
     public Map updateManager(
             @RequestParam String email,
             @RequestBody Map<String, String> body
@@ -73,7 +73,7 @@ public class ManagerController {
         }
     }
 
-    @DeleteMapping("/manager/{email}")
+    @DeleteMapping("/manager")
     public Map deleteManager(@RequestParam String email) {
         try {
             managerService.deleteManager(email);

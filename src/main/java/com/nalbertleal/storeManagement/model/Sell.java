@@ -28,20 +28,25 @@ public class Sell {
     )
     private Double amount;
     @Column(
-            name = "seller",
-            columnDefinition = "BIGINT"
+            name = "seller_email",
+            columnDefinition = "TEXT"
     )
-    private Long seller; // user id
+    private String sellerEmail; // user id
 //    private List<Product> products;
 
 
     public Sell() {
     }
 
-    public Sell(Long id, Double amount, Long seller) {
+    public Sell(Double amount, String sellerEmail) {
+        this.amount = amount;
+        this.sellerEmail = sellerEmail;
+    }
+
+    public Sell(Long id, Double amount, String sellerEmail) {
         this.id = id;
         this.amount = amount;
-        this.seller = seller;
+        this.sellerEmail = sellerEmail;
     }
 
     public Long getId() {
@@ -60,11 +65,11 @@ public class Sell {
         this.amount = amount;
     }
 
-    public Long getSeller() {
-        return seller;
+    public String getSellerEmail() {
+        return sellerEmail;
     }
 
-    public void setSeller(Long seller) {
-        this.seller = seller;
+    public void setSellerEmail(String sellerEmail) {
+        this.sellerEmail = sellerEmail;
     }
 }

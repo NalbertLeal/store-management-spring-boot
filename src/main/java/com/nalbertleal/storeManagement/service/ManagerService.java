@@ -29,6 +29,7 @@ public class ManagerService {
     }
 
     public void deleteManager(String email) {
-        managerRepository.deleteByEmail(email);
+        Manager manager = managerRepository.findByEmail(email).orElseThrow();
+        managerRepository.deleteById(manager.getId());
     }
 }

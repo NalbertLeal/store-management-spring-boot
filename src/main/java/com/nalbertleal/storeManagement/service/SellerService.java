@@ -25,9 +25,13 @@ public class SellerService {
         return sellerRepository.findByEmail(email).orElseThrow();
     }
 
-    public Seller createSeller(Seller user) {
-        managerRepository.findByEmail(user.getEmail()).orElseThrow();
-        return sellerRepository.save(user);
+    public List<Seller> getAllSellerFromManager(String email) {
+        return sellerRepository.findByManagerEmail(email);
+    }
+
+    public Seller createSeller(Seller seller) {
+        managerRepository.findByEmail(seller.getManagerEmail()).orElseThrow();
+        return sellerRepository.save(seller);
     }
 
     public Seller updateSeller(String email, Seller user) {
@@ -48,11 +52,8 @@ public class SellerService {
         return managerRepository.save(manager);
     }
 
-    public List<Seller> getAllSellerFromManager(String email) {
-        return sellerRepository.findByManagerEmail(email);
-    }
-
     public void deleteSeller(String email) {
-        sellerRepository.deleteByEmail(email);
+        Seller seller = sellerRepository.findByEmail(email).orElseThrow();
+        sellerRepository.deleteById(seller.getId());
     }
 }
