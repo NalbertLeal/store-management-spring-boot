@@ -1,0 +1,33 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: store_management
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  #        globally_quoted_identifiers: true
+  #        jdbc:
+  #          lob:
+  #            non_contextual_creation: true
+  jmx:
+    enabled: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/store_management
+    username: postgres
+    password: mysecretpassword
+
+#server.port = 8082
+#
+#jwt.secret=123456
+#spring.datasource.url=jdbc:postgresql://localhost:5432/store_management
+#spring.datasource.username=postgres
+#spring.datasource.password=mysecretpassword
+#spring.jpa.hibernate.ddl-auto=create-drop
+#spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+#spring.jpa.properties.hibernate.format-sql=true
