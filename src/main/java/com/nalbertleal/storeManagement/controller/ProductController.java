@@ -17,14 +17,6 @@ public class ProductController {
     }
 
     @GetMapping("/product")
-    public Map getAll() {
-        return Map.of(
-                "success", true,
-                "products", productService.getAllProducts()
-        );
-    }
-
-    @GetMapping("/product/{id}")
     public Map show(@RequestParam Long id) {
         try {
             return Map.of(
@@ -38,6 +30,14 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/all-products")
+    public Map getAll() {
+        return Map.of(
+                "success", true,
+                "products", productService.getAllProducts()
+        );
+    }
+
     @PostMapping("/product")
     public Map create(@RequestBody Map<String, String> body) {
         try {
@@ -45,7 +45,7 @@ public class ProductController {
                     body.get("name"),
                     Double.parseDouble(body.get("price")),
                     Long.parseLong(body.get("stock")),
-                    body.get("Description")
+                    body.get("description")
             );
             return Map.of(
                     "success", true,
@@ -58,7 +58,7 @@ public class ProductController {
         }
     }
 
-    @PutMapping("/product/{id}")
+    @PutMapping("/product")
     public Map create(
             @RequestParam Long id,
             @RequestBody Map<String, String> body
@@ -69,7 +69,7 @@ public class ProductController {
                     body.get("name"),
                     Double.parseDouble(body.get("price")),
                     Long.parseLong(body.get("stock")),
-                    body.get("Description")
+                    body.get("description")
             );
             return Map.of(
                     "success", true,

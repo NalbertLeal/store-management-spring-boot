@@ -25,22 +25,22 @@ public class SellProducts {
             name = "sellId",
             columnDefinition = "FLOAT"
     )
-    private Double sellId;
+    private Long sellId;
     @Column(
             name = "productId",
             columnDefinition = "FLOAT"
     )
-    private Double productId;
+    private Long productId;
 
     public SellProducts() {
     }
 
-    public SellProducts(Double sellId, Double productId) {
+    public SellProducts(Long sellId, Long productId) {
         this.sellId = sellId;
         this.productId = productId;
     }
 
-    public SellProducts(Long id, Double sellId, Double productId) {
+    public SellProducts(Long id, Long sellId, Long productId) {
         this.id = id;
         this.sellId = sellId;
         this.productId = productId;
@@ -54,19 +54,19 @@ public class SellProducts {
         this.id = id;
     }
 
-    public Double getSellId() {
+    public Long getSellId() {
         return sellId;
     }
 
-    public void setSellId(Double sellId) {
+    public void setSellId(Long sellId) {
         this.sellId = sellId;
     }
 
-    public Double getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(Double productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 }

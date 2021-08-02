@@ -32,6 +32,10 @@ public class SellService {
         return sellRepository.save(sell);
     }
 
+    public SellProducts createSellProducts(SellProducts sellProducts){
+        return sellProductsRepository.save(sellProducts);
+    }
+
     public Sell updateSell(Sell sell) {
         return sellRepository.save(sell);
     }

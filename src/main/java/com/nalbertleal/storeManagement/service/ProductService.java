@@ -21,7 +21,7 @@ public class ProductService {
     }
 
     public Product getProduct(Long id) {
-        return productRepository.getById(id);
+        return productRepository.findById(id).orElseThrow();
     }
 
     public Product createProduct(Product product) {

@@ -1,6 +1,7 @@
 package com.nalbertleal.storeManagement.controller;
 
 import com.nalbertleal.storeManagement.model.Sell;
+import com.nalbertleal.storeManagement.model.SellProducts;
 import com.nalbertleal.storeManagement.service.SellService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class SellController {
         this.sellService = sellService;
     }
 
-    @GetMapping("/sell/{email}")
+    @GetMapping("/sell")
     public Map getALLSellFromSeller(@RequestParam String email) {
         try {
             return Map.of(
@@ -48,7 +49,27 @@ public class SellController {
         }
     }
 
-    @PutMapping("/sell/{id}")
+    @PostMapping("/sell-products")
+    public Map createSellProduct(
+            @RequestBody Map<String, String> body
+    ) {
+        try {
+            SellProducts sellProducts = new SellProducts(
+                    Long.parseLong(body.get("sell_id")),
+                    Long.parseLong(body.get("product_id"))
+            );
+            return Map.of(
+                    "success", true,
+                    "sells", sellService.createSellProducts(sellProducts)
+            );
+        } catch (Exception e) {
+            return Map.of(
+                    "success", false
+            );
+        }
+    }
+
+    @PutMapping("/sell")
     public Map updateSell(
             @RequestParam Long id,
             @RequestBody Map<String, String> body
@@ -70,7 +91,7 @@ public class SellController {
         }
     }
 
-    @DeleteMapping("/sell/{id}")
+    @DeleteMapping("/sell")
     public Map deteleSell(@RequestParam Long id) {
         try {
             sellService.deleteSell(id);
